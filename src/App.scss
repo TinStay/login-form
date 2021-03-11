@@ -1,0 +1,64 @@
+$dark-green: #2f5f2d; 
+$dark-green-hover: #2d682c; 
+
+.App{
+  background-color: $dark-green;
+  height: 100vh;
+  padding: 2rem;
+  color: $dark-green;
+}
+
+.login-container{
+  max-width: 500px;
+  background-color: white;
+  border-radius: 7px;
+  
+  margin: 0 auto;
+  text-align: center;
+}
+
+.login-form {
+  padding: 20px 10%;
+
+  &-heading{
+    margin: 20px 0 30px 0;
+    font-size: 2rem;
+    color: $dark-green;
+  }
+
+  .login-form-field{
+    margin: 0px 0 30px 0;
+    width: 100%;
+    // background-color: red;
+  }
+
+  &-social-buttons {
+    margin: 10px auto 20px auto;
+  }
+
+
+
+  .text-muted {
+    margin-top: 0.7rem;
+  }
+
+  .submit-btn{
+    color: white;
+    text-decoration: none;
+    background-color: $dark-green;
+
+    &:hover {
+      color: white;
+      background-color: $dark-green-hover;
+    }
+  }
+
+  .sign-up-link{
+    color: blue;
+    text-decoration: none;
+
+    &:active, &:focus, {
+      text-decoration: none;
+    }
+  }
+}
