@@ -113,7 +113,7 @@ const LoginForm = () => {
               name="checkedG"
             />
           }
-          label="Remember me"
+          label="Remember me "
         />
         <a href="" className="login-form-sign-up-link">
           <p className="">Don't have an account?</p>
