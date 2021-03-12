@@ -6,8 +6,8 @@ $font-color: #444444;
 
 .App {
   // background-color: $dark-pink;
-  height: 100vh;
-  padding: 2rem 1rem;
+  min-height: 100vh;
+  padding: 3rem 1rem;
   color: $font-color;
   background: $dark-pink; /* fallback for old browsers */
   background: -webkit-linear-gradient(

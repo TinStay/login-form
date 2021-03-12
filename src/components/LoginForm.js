@@ -85,7 +85,7 @@ const LoginForm = (props) => {
   if (isFormValid) {
     alert = (
       <Alert style={{ marginBottom: "15px" }} severity="success">
-        Successfuly logged in
+        Successfully logged in.
       </Alert>
     );
   }
@@ -94,7 +94,7 @@ const LoginForm = (props) => {
     <div className="login-container">
       <form onSubmit={(e) => submitForm(e)} className="login-form">
         <h1 className="form-heading">Log in with</h1>
-        {showAlert && alert}
+        
         <div className="social-buttons">
           <SocialButton platform="Facebook" src={facebookIcon} />
           <SocialButton platform="Google" src={googleIcon} />
@@ -102,6 +102,10 @@ const LoginForm = (props) => {
         </div>
 
         <p className="line-break-label ">or</p>
+
+        {/* Alert */}
+        {showAlert && alert}
+
         <div className="form-controls">
           <ColoredTextField
             className="form-field"
