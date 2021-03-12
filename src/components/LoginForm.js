@@ -160,7 +160,7 @@ const LoginForm = (props) => {
 
         <div className="change-auth">
           Don't have an account?{" "}
-          <a href="" className="sign-up-link">
+          <a href="#" className="sign-up-link">
             Sign Up
           </a>
         </div>

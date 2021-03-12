@@ -2,7 +2,7 @@ import React from "react";
 
 const SocialButton = (props) => {
   return (
-    <a href="">
+    <a href="#">
       <img className="social-button" src={props.src} alt={`${props.platform} icon`} />
     </a>
   );
