@@ -43,7 +43,7 @@ const LoginForm = (props) => {
   const [showAlert, setShowAlert] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
   const [errorMessage, setErrorMessage] = useState(
-    "Please fill in all form fields"
+    "Please fill in all form fields."
   );
 
   const submitForm = (e) => {
