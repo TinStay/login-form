@@ -1,22 +1,41 @@
 import React, { useState } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Alert from "@material-ui/lab/Alert";
-import { green } from "@material-ui/core/colors";
+import { orange, pink } from "@material-ui/core/colors";
 import { TextField, FormControlLabel, Checkbox } from "@material-ui/core";
-// import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
+import SocialButton from "./SocialButton";
+import facebookIcon from "../assets/facebookIcon.png";
+import googleIcon from "../assets/googleIcon.png";
+import twitterIcon from "../assets/twitterIcon.png";
 
-const GreenCheckbox = withStyles({
+const OrangeCheckbox = withStyles({
   root: {
-    color: green[400],
+    color: pink[600],
     "&$checked": {
-      color: green[600],
+      color: pink[600],
     },
   },
   checked: {},
 })((props) => <Checkbox color="default" {...props} />);
 
-const LoginForm = () => {
+const ColoredTextField = withStyles({
+  root: {
+    "& label.Mui-focused": {
+      color: "#f50057",
+    },
+    "& .MuiInput-underline:after": {
+      borderBottomColor: "#f50057",
+    },
+    "& .MuiOutlinedInput-root": {
+      "&.Mui-focused fieldset": {
+        borderColor: "#f50057",
+      },
+    },
+  },
+})(TextField);
+
+const LoginForm = (props) => {
   // State
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -37,17 +56,17 @@ const LoginForm = () => {
 
     // Form Validation
     if (email != "" && password != "") {
-      if (isEmail(email) && password.length > 8) {
+      if (isEmail(email) && password.length >= 6) {
         isValid = true;
       } else if (!isEmail(email)) {
         setErrorMessage("Invalid email address.");
-      } else if (password.length < 8) {
+      } else if (password.length < 6) {
         setErrorMessage("Password must be at least 8 symbols.");
       } else {
         setErrorMessage("Incorrect email or password.");
       }
-    }else{
-        setErrorMessage("Please fill in all form fields");
+    } else {
+      setErrorMessage("Please fill in all form fields");
     }
 
     // Update state
@@ -74,50 +93,71 @@ const LoginForm = () => {
   return (
     <div className="login-container">
       <form onSubmit={(e) => submitForm(e)} className="login-form">
-        <h1 className="login-form-heading">Login</h1>
+        <h1 className="form-heading">Log in with</h1>
         {showAlert && alert}
-        <TextField
-          className="login-form-field"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          id="email-field"
-          label="Email"
-          variant="outlined"
-          size="small"
-        />
-        <TextField
-          className="login-form-field"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          type="password"
-          id="password-field"
-          label="Password"
-          variant="outlined"
-          size="small"
-        />
+        <div className="social-buttons">
+          <SocialButton platform="Facebook" src={facebookIcon} />
+          <SocialButton platform="Google" src={googleIcon} />
+          <SocialButton platform="Twitter" src={twitterIcon} />
+        </div>
+
+        <p className="line-break-label ">or</p>
+        <div className="form-controls">
+          <ColoredTextField
+            className="form-field"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            id="email-field"
+            label="Email"
+            variant="outlined"
+            size="small"
+          />
+          <ColoredTextField
+            className="form-field"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+            id="password-field"
+            label="Password"
+            variant="outlined"
+            size="small"
+          />
+          <div className="checkbox">
+            <FormControlLabel
+              control={
+                <OrangeCheckbox
+                  checked={isChecked}
+                  // data-testid="checkbox"
+                  title="checkbox"
+                  onChange={(e) => setIsChecked(e.target.checked)}
+                  name="checkbox"
+                  id="checkbox"
+                />
+              }
+              label="Remember me "
+            />
+          </div>
+        </div>
 
         <Button
+          id="submit-button"
           type="submit"
-          className="submit-btn"
+          className="submit-button"
           variant="outlined"
           color="primary"
           fullWidth
+          size="large"
         >
           Log in
         </Button>
-        <FormControlLabel
-          control={
-            <GreenCheckbox
-              checked={isChecked}
-              onChange={(e) => setIsChecked(e.target.checked)}
-              name="checkedG"
-            />
-          }
-          label="Remember me "
-        />
-        <a href="" className="login-form-sign-up-link">
-          <p className="">Don't have an account?</p>
-        </a>
+
+        <div className="change-auth">
+          Don't have an account?{" "}
+          <a href="" className="sign-up-link">
+            Sign Up
+          </a>
+        </div>
+
       </form>
     </div>
   );
