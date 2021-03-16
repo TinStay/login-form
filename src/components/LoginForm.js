@@ -13,26 +13,26 @@ const OrangeCheckbox = withStyles({
   root: {
     color: pink[600],
     "&$checked": {
-      color: pink[600],
-    },
+      color: pink[600]
+    }
   },
-  checked: {},
+  checked: {}
 })((props) => <Checkbox color="default" {...props} />);
 
 const ColoredTextField = withStyles({
   root: {
     "& label.Mui-focused": {
-      color: "#f50057",
+      color: "#f50057"
     },
     "& .MuiInput-underline:after": {
-      borderBottomColor: "#f50057",
+      borderBottomColor: "#f50057"
     },
     "& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {
-        borderColor: "#f50057",
-      },
-    },
-  },
+        borderColor: "#f50057"
+      }
+    }
+  }
 })(TextField);
 
 const LoginForm = (props) => {
@@ -46,7 +46,6 @@ const LoginForm = (props) => {
     "Please fill in all form fields."
   );
 
-
   const submitForm = (e) => {
     e.preventDefault();
 
@@ -56,16 +55,17 @@ const LoginForm = (props) => {
     let isValid = false;
 
     // Form Validation
-    if (email != "" && password != "") {
+    if (email !== "" && password !== "") {
       if (isEmail(email) && password.length >= 6) isValid = true;
       else if (!isEmail(email)) setErrorMessage("Invalid email address.");
-      else if (password.length < 6) setErrorMessage("Password must be at least 6 symbols."); 
+      else if (password.length < 6)
+        setErrorMessage("Password must be at least 6 symbols.");
       else setErrorMessage("Incorrect email or password.");
     } else {
       setErrorMessage("Please fill in all form fields");
     }
 
-    // Save credentials in local storage 
+    // Save credentials in local storage
     // if(isChecked){
     //   localStorage.setItem('email', email);
     // }
@@ -134,7 +134,6 @@ const LoginForm = (props) => {
               control={
                 <OrangeCheckbox
                   checked={isChecked}
-                  // data-testid="checkbox"
                   title="checkbox"
                   onChange={(e) => setIsChecked(e.target.checked)}
                   name="checkbox"
